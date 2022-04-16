@@ -9,7 +9,7 @@
 
 Name:           go-bindata
 Version:        3.1.3
-Release:        1
+Release:        2
 Summary:        A small utility which generates Go code from any file
 License:        MIT
 URL:		    https://%{provider_prefix}
@@ -32,8 +32,8 @@ mkdir -p src/github.com/go-bindata/
 ln -s ../../../ src/github.com/go-bindata/go-bindata
 
 export GOPATH=$(pwd):%{gopath}
+export GO111MODULE=off
 
-# go build -o bin/go-bindata github.com/go-bindata/go-bindata/go-bindata
 go build -o bin/go-bindata %{import_path}/go-bindata
 
 %install
@@ -47,5 +47,8 @@ install -m 755 bin/go-bindata %{buildroot}%{_bindir}/go-bindata
 %{_bindir}/go-bindata
 
 %changelog
+* Thu Apr 14 2022 yangjinghua <yjhdandan@163.com> - 3.1.3-2
+- Set go module off
+
 * Fri Jul 10 2020 openEuler Buildteam <buildteam@openeuler.org> - v1.7.0-1
 - Package init
